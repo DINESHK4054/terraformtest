@@ -1,54 +1,76 @@
+# Configure the AWS Provider
 provider "aws" {
-  region = var.aws_region
+  access_key = "AKIAUSA7BRMZEDEN2TA2"
+  secret_key = "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"
+  region  = "ap-southeast-1"
 }
+resource "aws_vpc" "vpc_devops" {
+  cidr_block       = "190.160.0.0/16"
+  instance_tenancy = "default"
 
-#Create security group with firewall rules
-resource "aws_security_group" "security_jenkins_grp" {
-  name        = var.security_group
-  description = "security group for jenkins"
+  tags = {
+    Name = "vpc_devops"
+    Location ="Singapore"
+  }
+}
+ resource "aws_subnet" "sub_public_devops" {
+  vpc_id     = "${aws_vpc.vpc_devops.id}"
+  cidr_block = "190.160.1.0/24"
+
+ tags = {
+    Name = "sub_public_devops"
+    
+  }
+}
+resource "aws_security_group" "sg_devops" {
+  name        = "sg_devops"
+  description = "sg_devops_inbound traffic"
+  vpc_id      = "${aws_vpc.vpc_devops.id}"
 
   ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
- ingress {
+    description = "sg_devops from VPC"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
- # outbound from jenkis server
-  egress {
-    from_port   = 0
-    to_port     = 65535
+    ingress {
+    description = "sg_devops from VPC"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags= {
-    Name = var.security_group
+  egress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+    egress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "sg_devops"
   }
 }
 
-resource "aws_instance" "myFirstInstance" {
-  ami           = var.ami_id
-  key_name = var.key_name
-  instance_type = var.instance_type
-  security_groups= [var.security_group]
-  tags= {
-    Name = var.tag_name
+resource "aws_instance" "test_devops" {
+
+ami           = "ami-02b6d9703a69265e9"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test_devops"
   }
 }
-
-# Create Elastic IP address
-resource "aws_eip" "myElasticIP" {
-  vpc      = true
-  instance = aws_instance.myFirstInstance.id
-tags= {
-    Name = "jenkins_elastic_ip"
-  }
+resource "aws_launch_configuration" "test_devops" {
+  name          = "test_devops"
+  image_id      = "ami-02b6d9703a69265e9"
+  instance_type = "t2.micro"
 }
