@@ -69,10 +69,3 @@ ami           = "ami-0c802847a7dd848c0"
     Name = "kp_devops"
   }
 }
-
-resource "aws_launch_configuration" "kp_devops" {
-  name          = "kp_devops"
-  image_id      = "ami-02b6d9703a69265e9"
-  instance_type = "t2.micro"
-}
-
