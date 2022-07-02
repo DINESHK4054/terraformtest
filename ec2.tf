@@ -116,6 +116,6 @@ listener {
   connection_draining_timeout = 400
 
   tags = {
-    Name = "terraform-elb"
+    Name = "foobar-terraform-elb"
   }
 }
