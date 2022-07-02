@@ -60,22 +60,22 @@ resource "aws_security_group" "sg_devops" {
   }
 }
 
-resource "aws_instance" "kp_devops" {
+resource "aws_instance" "test_devops" {
 
 ami           = "ami-02b6d9703a69265e9"
   instance_type = "t2.micro"
 
   tags = {
-    Name = "kp_devops"
+    Name = "test_devops"
   }
 }
 
-resource "aws_key_pair" "kp_devops" {
-  key_name   = "kp_devops-key"
+resource "aws_key_pair" "test_devops" {
+  key_name   = "test_devops-key"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 email@example.com"
 }
-resource "aws_launch_configuration" "kp_devops" {
-  name          = "kp_devops"
+resource "aws_launch_configuration" "test_devops" {
+  name          = "test_devops"
   image_id      = "ami-02b6d9703a69265e9"
   instance_type = "t2.micro"
 }
