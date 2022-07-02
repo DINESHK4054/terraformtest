@@ -109,13 +109,4 @@ listener {
     target              = "HTTP:8080/"
     interval            = 30
   }
- instances                   = [aws_instance.foo.id]
-  cross_zone_load_balancing   = true
-  idle_timeout                = 400
-  connection_draining         = true
-  connection_draining_timeout = 400
-
-  tags = {
-    Name = "terraform-elb"
-  }
 }
