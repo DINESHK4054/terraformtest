@@ -62,7 +62,7 @@ resource "aws_security_group" "sg_devops" {
 
 resource "aws_instance" "kp_devops" {
 
-ami           = "ami-02b6d9703a69265e9"
+ami           = "ami-0c802847a7dd848c0"
   instance_type = "t2.micro"
 
   tags = {
