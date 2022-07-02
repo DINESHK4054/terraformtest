@@ -1,7 +1,7 @@
 # Configure the AWS Provider
 provider "aws" {
-  access_key = ""
-  secret_key = ""
+  access_key = "AKIAUSA7BRMZGP5XJ7GK"
+  secret_key = "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"
   region  = "ap-southeast-1"
 }
 resource "aws_vpc" "vpc_devops" {
@@ -72,7 +72,32 @@ ami           = "ami-02b6d9703a69265e9"
 
 resource "aws_key_pair" "kp_devops" {
   key_name   = "kp_devops-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 email@example.com"
+  public_key = "ssh-rsa
+Encryption: none
+Comment: imported-openssh-key
+Public-Lines: 6
+AAAAB3NzaC1yc2EAAAADAQABAAABAQDlqaGlg7lggzyCh601idp0mEInXkgzocbI
+bKSrcooAcuvB09ZnCpKK36iCA4Ofowzh//AYKZk2t8MduI/z1lJ1kOLB2JrviQ9m
+QqfS6YQ0LvsUmQc1sna9Xp7IPE9QqtAfB+v2wpMzFhk+udtrnbd3oW/dbFVY9Pod
+xM/VsFtI1BA731kFncKCizZWJrc+CM2zcdYQpWN6y4sZzn7QH6TB7AD6uKrNOop/
+GNqPVZnOKiITHqJxNkafpUuEhTuU8Nhxx/xRMN/QXRtiW33c1UxYZod4L1GzeLfU
+48a3qL4dNe8JoRt6TdVbCRSJp7POrR+m6i5xgCgWpkCK4Ur3KuSZ
+Private-Lines: 14
+AAABACoLehpxGRkALa2/5QfuKt45mbLXYeSB84Bx01vH5lfasiqT+6Z1mwptk83p
+kslA8nTVhEEILJKF5eSlC0WasRHw6nKOkx7TOsx/23WTZq6fAzxsH5PHDlHw5qTF
+1cdw3hUwQBS23nf1zb1cDT2QbCwsk+w3jxBwGPImO95lIPEd+Og/fUXYkAofIcla
+M5IUr+dC3A1XGV6mXsjEKql4xw5dEaeaiLJtJg20m4E4d17AAGK34VUDi0uHd+LP
+erDveJRBiRk1BPvbU7BWy/3GLUsSIOzornTV8prtMi0l5jTFB0KuLa1Zb6ulowfc
+I/ROcA7rNLBnMX5F7ga/rcM+ueEAAACBAPYTBTUbZXfBlBqVQvwLv+tSrhUXTea7
+ss+a/h+rFGTYg/3JuGH2NdM/JA3xZp3zj1FMTvGgqyXadsR3X3kBBnI62ChWek2t
+fGO7Wo5bL7jmM6T2lx2WdvmZvVSYrAoXIO9AFfn7IAEWQXmIUHDF9+SRyIY244x0
+oUQQcmtGDoLFAAAAgQDu7SSdw0MiMvbwjqms2h18Qr+r+WcMTnGBhSbtIMnctqod
+H2pdeTmJJNgjrNPJupzh35ldqsIrq/zpESwhDHcwwAuUbBhKK2fq6SM8/WWrqH39
+n+a8oxRGgzARB+Ykf2CS49euEwUYvKpGLjVs7h0iN6uWUHaWexIUqOlAVAdnxQAA
+AIEA6YSANsbRdhb3alnGtyNPXD9JTEIPEOZkU22O/ohyMLxW9fCsv5cMkJwcnYnJ
+7EzYpFNgTuuCytRf14jqNSGYMkWaIHSE2s4CTBehs7BAWRAWNwmJ8jhuWHGsYUAj
+xuK6BCv7acqky6PcNX/yLHj16gDT25TV8OnFjfQ47Izny44=
+Private-MAC: fbf7f5607bcc84c7932b1035598855ed9f3dc6e5"
 }
 resource "aws_launch_configuration" "kp_devops" {
   name          = "kp_devops"
